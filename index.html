@@ -23,14 +23,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sabor Casero — Comida casera a domicilio</title>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sabor Casero — Comida casera a domicilio</title>
-...
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sabor Casero — Comida casera a domicilio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style id="app-styles">
@@ -249,7 +241,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="app">
 
   <!-- ===================== HEADER GLOBAL ===================== -->
-  <header class="topbar">
   <header class="topbar">
     <div class="topbar-inner">
       <button class="brand" data-nav="home" aria-label="Ir al inicio">
@@ -633,11 +624,11 @@ function renderMenus(filtroInicial){
 // ============================================================
 // RENDER: DETALLE
 // ============================================================
+function renderDetail(menuId){
   dataLayer.push({
-  event:'view_item',
-  menu_id:menuId
-});
-  function renderDetail(menuId){
+    event:'view_item',
+    menu_id:menuId
+  });
   const m = MENUS.find(x => x.id === menuId);
   const cocinero = cocineroDe(m);
   const content = document.getElementById('detail-content');
@@ -746,10 +737,10 @@ function renderCart(){
 // ============================================================
 // CHECKOUT
 // ============================================================
+function renderCheckout(){
   dataLayer.push({
-  event:'begin_checkout'
-});
-  function renderCheckout(){
+    event:'begin_checkout'
+  });
   const { items, subtotal, envio, total } = cartTotals();
   const summaryEl = document.getElementById('checkout-summary');
   summaryEl.innerHTML = `
@@ -774,7 +765,7 @@ document.getElementById('checkout-form').addEventListener('submit', (e) => {
   dataLayer.push({
     event:'purchase',
     order_id: state.pedidoConfirmado.id
-});
+  });
   navigate('confirm');
 });
 
