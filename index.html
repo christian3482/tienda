@@ -633,7 +633,11 @@ function renderMenus(filtroInicial){
 // ============================================================
 // RENDER: DETALLE
 // ============================================================
-function renderDetail(menuId){
+  dataLayer.push({
+  event:'view_item',
+  menu_id:menuId
+});
+  function renderDetail(menuId){
   const m = MENUS.find(x => x.id === menuId);
   const cocinero = cocineroDe(m);
   const content = document.getElementById('detail-content');
@@ -671,8 +675,22 @@ function renderDetail(menuId){
 // ============================================================
 function addToCart(menuId){
   const item = state.carrito.find(i => i.menuId === menuId);
-  if(item){ item.cantidad++; } else { state.carrito.push({menuId, cantidad:1}); }
+
+  if(item){
+    item.cantidad++;
+  }else{
+    state.carrito.push({
+      menuId,
+      cantidad:1
+    });
+  }
+
   updateCartCount();
+
+  dataLayer.push({
+    event:'add_to_cart',
+    menu_id:menuId
+  });
 }
 function updateCartCount(){
   const total = state.carrito.reduce((sum,i)=>sum+i.cantidad,0);
@@ -728,7 +746,10 @@ function renderCart(){
 // ============================================================
 // CHECKOUT
 // ============================================================
-function renderCheckout(){
+  dataLayer.push({
+  event:'begin_checkout'
+});
+  function renderCheckout(){
   const { items, subtotal, envio, total } = cartTotals();
   const summaryEl = document.getElementById('checkout-summary');
   summaryEl.innerHTML = `
@@ -750,6 +771,10 @@ document.getElementById('checkout-form').addEventListener('submit', (e) => {
   document.getElementById('confirm-id').textContent = '#' + state.pedidoConfirmado.id;
   state.carrito = [];
   updateCartCount();
+  dataLayer.push({
+    event:'purchase',
+    order_id: state.pedidoConfirmado.id
+});
   navigate('confirm');
 });
 
