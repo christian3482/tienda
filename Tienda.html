@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HLVTNTWQ7X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HLVTNTWQ7X');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sabor Casero — Comida casera a domicilio</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sabor Casero — Comida casera a domicilio</title>
+...
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sabor Casero — Comida casera a domicilio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style id="app-styles">
+:root{
+  --cream:#FBF3E7;
+  --cream-deep:#F3E5D0;
+  --terracota:#C0392B;
+  --terracota-deep:#9E2E20;
+  --olive:#6B7A3A;
+  --olive-deep:#535F2C;
+  --brown:#4A3428;
+  --gold:#D4A24C;
+  --white:#FFFEFB;
+  --ring:rgba(192,57,43,0.35);
+  --shadow-soft: 0 8px 24px rgba(74,52,40,0.08);
+  --shadow-card: 0 4px 14px rgba(74,52,40,0.10);
+  --radius-plate: 28px;
+  --radius-card: 18px;
+  font-family: 'Karla', sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--cream);color:var(--brown);}
+body{font-family:'Karla',sans-serif;}
+h1,h2,h3{font-family:'Fraunces',serif;color:var(--brown);margin:0;}
+button{font-family:inherit;cursor:pointer;}
+input,select{font-family:inherit;}
+:focus-visible{outline:3px solid var(--ring);outline-offset:2px;}
+.muted{color:#8a7567;}
+
+#app{min-height:100vh;display:flex;flex-direction:column;}
+
+/* ---------- TOPBAR ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--cream-deep);}
+.topbar-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:28px;padding:14px 28px;}
+.brand{display:flex;align-items:center;gap:10px;background:none;border:none;padding:0;}
+.brand-mark{width:38px;height:38px;border-radius:50%;background:var(--terracota);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:15px;}
+.brand-name{font-family:'Fraunces',serif;font-weight:600;font-size:20px;color:var(--brown);}
+.topbar-nav{display:flex;gap:6px;flex:1;}
+.nav-link{background:none;border:none;color:var(--brown);font-weight:600;font-size:15px;padding:10px 14px;border-radius:10px;transition:background .15s;}
+.nav-link:hover{background:var(--cream);}
+.cart-pill{display:flex;align-items:center;gap:8px;background:var(--brown);color:var(--cream);border:none;padding:10px 16px;border-radius:999px;font-weight:600;font-size:14px;}
+#cart-count{background:var(--terracota);color:#fff;border-radius:999px;min-width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;padding:0 5px;}
+
+/* ---------- LAYOUT ---------- */
+.screen{max-width:1180px;margin:0 auto;padding:40px 28px 80px;width:100%;flex:1;}
+
+/* ---------- HERO ---------- */
+.hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;padding:48px 0 56px;}
+.eyebrow{font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--terracota);font-size:13px;margin:0 0 14px;}
+.hero h1{font-size:46px;line-height:1.12;font-weight:600;margin-bottom:18px;}
+.hero-sub{font-size:17px;line-height:1.6;color:#6e5b4f;max-width:480px;margin-bottom:28px;}
+.district-picker{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--cream-deep);border-radius:999px;padding:8px 8px 8px 18px;box-shadow:var(--shadow-soft);max-width:520px;}
+.district-picker svg{color:var(--terracota);flex-shrink:0;}
+#district-select{flex:1;border:none;background:none;font-size:15px;padding:8px 4px;color:var(--brown);}
+.btn-primary{background:var(--terracota);color:#fff;border:none;padding:12px 22px;border-radius:999px;font-weight:700;font-size:14.5px;transition:background .15s, transform .1s;}
+.btn-primary:hover{background:var(--terracota-deep);}
+.btn-primary:active{transform:scale(0.98);}
+.btn-full{width:100%;padding:15px;font-size:16px;}
+
+.hero-plate{display:flex;justify-content:center;}
+.plate-ring{width:320px;height:320px;border-radius:50%;background:var(--white);border:14px solid var(--white);box-shadow:0 0 0 3px var(--gold), var(--shadow-soft);display:flex;align-items:center;justify-content:center;position:relative;}
+.plate-ring::before{content:"";position:absolute;inset:24px;border-radius:50%;border:2px dashed var(--cream-deep);}
+.plate-food{font-size:120px;}
+
+/* ---------- CATEGORIES ---------- */
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding-bottom:56px;}
+.category-card{background:var(--white);border:1px solid var(--cream-deep);border-radius:var(--radius-card);padding:26px;display:flex;flex-direction:column;align-items:center;gap:10px;font-weight:700;font-size:16px;color:var(--brown);box-shadow:var(--shadow-card);transition:transform .15s, box-shadow .15s;}
+.category-card:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(74,52,40,0.14);}
+.cat-emoji{font-size:34px;}
+
+/* ---------- FEATURED ---------- */
+.section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;}
+.section-head h2{font-size:24px;font-weight:600;}
+.link-btn{background:none;border:none;color:var(--terracota);font-weight:700;font-size:14px;}
+.cook-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+
+/* ---------- MENU CARDS (shared) ---------- */
+.menu-card{background:var(--white);border:1px solid var(--cream-deep);border-radius:var(--radius-card);overflow:hidden;box-shadow:var(--shadow-card);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s;}
+.menu-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(74,52,40,0.15);}
+.menu-card-img{height:140px;background:var(--cream-deep);display:flex;align-items:center;justify-content:center;font-size:54px;}
+.menu-card-body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.menu-card-cook{font-size:12.5px;color:var(--olive-deep);font-weight:700;text-transform:uppercase;letter-spacing:.03em;}
+.menu-card-title{font-family:'Fraunces',serif;font-size:19px;font-weight:600;}
+.menu-card-meta{display:flex;align-items:center;gap:6px;font-size:13px;color:#8a7567;}
+.menu-card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;}
+.menu-card-price{font-weight:700;font-size:17px;color:var(--terracota);}
+.btn-small{background:var(--brown);color:#fff;border:none;padding:8px 14px;border-radius:999px;font-weight:700;font-size:13px;}
+.btn-small:hover{background:#382519;}
+.stars{color:var(--gold);font-size:13px;}
+
+/* ---------- MENUS LIST SCREEN ---------- */
+.menus-toolbar{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:28px;}
+.menus-toolbar h1{font-size:34px;}
+.toolbar-filters{display:flex;gap:8px;flex-wrap:wrap;}
+.filter-chip{background:var(--white);border:1px solid var(--cream-deep);padding:8px 16px;border-radius:999px;font-weight:600;font-size:13.5px;color:var(--brown);}
+.filter-chip.active{background:var(--brown);color:var(--cream);border-color:var(--brown);}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+
+/* ---------- DETAIL SCREEN ---------- */
+.back-link{background:none;border:none;color:var(--olive-deep);font-weight:700;font-size:14px;margin-bottom:18px;padding:0;}
+.detail-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.detail-img{height:340px;border-radius:var(--radius-plate);background:var(--cream-deep);display:flex;align-items:center;justify-content:center;font-size:110px;box-shadow:var(--shadow-soft);}
+.detail-cook-tag{display:inline-flex;align-items:center;gap:8px;background:var(--cream-deep);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700;color:var(--olive-deep);margin-bottom:14px;}
+.detail-title{font-size:32px;margin-bottom:10px;}
+.detail-desc{font-size:15.5px;line-height:1.7;color:#6e5b4f;margin-bottom:18px;}
+.detail-ingredients{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;}
+.ingredient-tag{background:var(--white);border:1px solid var(--cream-deep);padding:6px 12px;border-radius:999px;font-size:12.5px;color:var(--brown);}
+.detail-price-row{display:flex;align-items:center;justify-content:space-between;background:var(--white);border:1px solid var(--cream-deep);border-radius:var(--radius-card);padding:20px;box-shadow:var(--shadow-card);}
+.detail-price{font-size:26px;font-weight:700;color:var(--terracota);font-family:'Fraunces',serif;}
+.qty-stepper{display:flex;align-items:center;gap:14px;border:1px solid var(--cream-deep);border-radius:999px;padding:6px 16px;background:var(--cream);}
+.qty-stepper button{background:none;border:none;font-size:18px;font-weight:700;color:var(--terracota);width:22px;}
+.reviews{margin-top:30px;}
+.review{padding:14px 0;border-top:1px solid var(--cream-deep);}
+.review-head{display:flex;justify-content:space-between;font-weight:700;font-size:14px;margin-bottom:4px;}
+.review p{margin:0;font-size:14px;color:#6e5b4f;}
+
+/* ---------- CART / TICKET ---------- */
+.cart-layout, .checkout-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:36px;align-items:start;margin-top:24px;}
+.cart-items{display:flex;flex-direction:column;gap:14px;}
+.cart-item{display:flex;align-items:center;gap:16px;background:var(--white);border:1px solid var(--cream-deep);border-radius:var(--radius-card);padding:14px 18px;box-shadow:var(--shadow-card);}
+.cart-item-img{width:58px;height:58px;border-radius:14px;background:var(--cream-deep);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;}
+.cart-item-info{flex:1;}
+.cart-item-info .name{font-weight:700;font-size:15px;}
+.cart-item-info .cook{font-size:12.5px;color:#8a7567;}
+.cart-item-price{font-weight:700;color:var(--terracota);}
+.cart-item-remove{background:none;border:none;color:#b0a193;font-size:13px;text-decoration:underline;}
+.empty-state{background:var(--white);border:1px dashed var(--cream-deep);border-radius:var(--radius-card);padding:40px;text-align:center;color:#8a7567;}
+
+.ticket{background:var(--white);border-radius:var(--radius-card);padding:24px;box-shadow:var(--shadow-soft);position:relative;}
+.ticket::before, .ticket::after{content:"";position:absolute;left:0;right:0;height:10px;background:radial-gradient(circle, transparent 6px, var(--white) 6.5px) 0 0/16px 16px repeat-x;}
+.ticket::before{top:-5px;}
+.ticket::after{bottom:-5px;transform:rotate(180deg);}
+.ticket h3{font-size:18px;margin-bottom:16px;font-weight:600;}
+.ticket-row{display:flex;justify-content:space-between;font-size:14px;padding:6px 0;color:#6e5b4f;}
+.ticket-row.total{border-top:1px dashed var(--cream-deep);margin-top:10px;padding-top:14px;font-weight:700;color:var(--brown);font-size:17px;}
+
+/* ---------- CHECKOUT FORM ---------- */
+.checkout-form fieldset{border:none;padding:0;margin:0 0 28px;}
+.checkout-form legend{font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin-bottom:14px;padding:0;}
+.checkout-form label{display:flex;flex-direction:column;gap:6px;font-size:13.5px;font-weight:700;color:var(--brown);margin-bottom:14px;}
+.checkout-form input, .checkout-form select{padding:12px 14px;border-radius:12px;border:1px solid var(--cream-deep);background:var(--white);font-size:14.5px;color:var(--brown);}
+.pay-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.pay-option{display:flex;flex-direction:column;align-items:center;gap:8px;border:1px solid var(--cream-deep);border-radius:14px;padding:16px 8px;font-weight:700;font-size:13px;background:var(--white);cursor:pointer;position:relative;}
+.pay-option input{position:absolute;opacity:0;inset:0;cursor:pointer;}
+.pay-option:has(input:checked){border-color:var(--terracota);background:var(--cream);box-shadow:0 0 0 2px var(--ring);}
+.pay-emoji{font-size:24px;}
+
+/* ---------- CONFIRMATION ---------- */
+.confirm-box{max-width:520px;margin:40px auto;text-align:center;background:var(--white);border-radius:var(--radius-plate);padding:48px 36px;box-shadow:var(--shadow-soft);}
+.confirm-stamp{width:64px;height:64px;border-radius:50%;background:var(--olive);color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
+.confirm-box h1{font-size:25px;margin-bottom:10px;}
+.confirm-tracker{display:flex;flex-direction:column;gap:14px;text-align:left;margin:30px 0;padding:20px;background:var(--cream);border-radius:14px;}
+.track-step{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:#b0a193;}
+.track-dot{width:10px;height:10px;border-radius:50%;background:#d8cabd;}
+.track-step.active{color:var(--olive-deep);}
+.track-step.active .track-dot{background:var(--olive);}
+
+/* ---------- ACCOUNT ---------- */
+.account-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;margin-top:24px;}
+.account-card{background:var(--white);border:1px solid var(--cream-deep);border-radius:var(--radius-card);padding:24px;box-shadow:var(--shadow-card);}
+.account-card h2{font-size:18px;margin-bottom:16px;}
+.order-history-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-top:1px solid var(--cream-deep);font-size:14px;}
+.order-history-row:first-child{border-top:none;}
+.order-status{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--cream-deep);color:var(--olive-deep);}
+.coupon{background:linear-gradient(135deg,var(--terracota),var(--terracota-deep));color:#fff;border-radius:14px;padding:20px;text-align:center;}
+.coupon .code{font-family:'Fraunces',serif;font-size:24px;font-weight:700;letter-spacing:.04em;margin:8px 0;}
+.coupon p{margin:0;font-size:13px;opacity:.9;}
+
+/* ---------- BOTTOM NAV (mobile only) ---------- */
+.bottom-nav{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:60;
+  background:var(--white);border-top:1px solid var(--cream-deep);
+  padding:8px 12px calc(8px + env(safe-area-inset-bottom));
+  justify-content:space-around;
+  box-shadow:0 -4px 14px rgba(74,52,40,0.08);
+}
+.bottom-nav-item{
+  background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:3px;
+  color:#b0a193;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:10px;
+}
+.bottom-nav-item.active{color:var(--terracota);}
+.bottom-nav-item svg{width:22px;height:22px;}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:880px){
+  .hero{grid-template-columns:1fr;}
+  .hero-plate{order:-1;}
+  .plate-ring{width:220px;height:220px;}
+  .plate-food{font-size:80px;}
+  .hero h1{font-size:34px;}
+  .categories{grid-template-columns:1fr 1fr;}
+  .cook-row{grid-template-columns:1fr;}
+  .menu-grid{grid-template-columns:1fr 1fr;}
+  .detail-layout, .cart-layout, .checkout-layout, .account-layout{grid-template-columns:1fr;}
+  .topbar-nav{display:none;}
+  body{padding-bottom:64px;} /* espacio para bottom nav */
+  .bottom-nav{display:flex;}
+}
+@media (max-width:560px){
+  .categories{grid-template-columns:1fr;}
+  .menu-grid{grid-template-columns:1fr;}
+  .pay-options{grid-template-columns:1fr;}
+}
+
+</style>
+
+</head>
+<body>
+
+
+<div id="app">
+
+  <!-- ===================== HEADER GLOBAL ===================== -->
+  <header class="topbar">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <button class="brand" data-nav="home" aria-label="Ir al inicio">
+        <span class="brand-mark">SC</span>
+        <span class="brand-name">Sabor Casero</span>
+      </button>
+      <nav class="topbar-nav">
+        <button class="nav-link" data-nav="home">Inicio</button>
+        <button class="nav-link" data-nav="menus">Menús</button>
+        <button class="nav-link" data-nav="account">Mi cuenta</button>
+      </nav>
+      <button class="cart-pill" data-nav="cart" aria-label="Ver carrito">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l.4 2M7 13h10l3-8H5.4M7 13L5.4 5M7 13l-1.5 6h12M9 21a1 1 0 100-2 1 1 0 000 2zM18 21a1 1 0 100-2 1 1 0 000 2z"/></svg>
+        <span id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== PANTALLA: HOME ===================== -->
+  <main class="screen" id="screen-home" data-screen>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Comida casera · Lima Metropolitana</p>
+        <h1>El menú de la casa,<br>directo a tu mesa.</h1>
+        <p class="hero-sub">Cocineras y cocineros del barrio preparan el almuerzo de hoy. Tú solo eliges el plato y nosotros lo llevamos.</p>
+        <form class="district-picker" id="district-form">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <select id="district-select" aria-label="Elegir distrito">
+            <option value="">¿Dónde te entregamos?</option>
+            <option>Jesús María</option>
+            <option>Pueblo Libre</option>
+            <option>Magdalena</option>
+            <option>San Miguel</option>
+            <option>Surquillo</option>
+            <option>Lince</option>
+          </select>
+          <button type="submit" class="btn-primary">Ver menús de hoy</button>
+        </form>
+      </div>
+      <div class="hero-plate" aria-hidden="true">
+        <div class="plate-ring">
+          <div class="plate-food">🍲</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories">
+      <button class="category-card" data-nav="menus" data-filter="Desayuno">
+        <span class="cat-emoji">☕</span><span>Desayunos</span>
+      </button>
+      <button class="category-card" data-nav="menus" data-filter="Almuerzo">
+        <span class="cat-emoji">🍛</span><span>Almuerzos</span>
+      </button>
+      <button class="category-card" data-nav="menus" data-filter="Postre">
+        <span class="cat-emoji">🍮</span><span>Postres</span>
+      </button>
+    </section>
+
+    <section class="featured">
+      <div class="section-head">
+        <h2>Las cocinas mejor calificadas esta semana</h2>
+        <button class="link-btn" data-nav="menus">Ver todas →</button>
+      </div>
+      <div class="cook-row" id="featured-cooks"></div>
+    </section>
+  </main>
+
+  <!-- ===================== PANTALLA: MENÚS (LISTADO) ===================== -->
+  <main class="screen" id="screen-menus" data-screen hidden>
+    <div class="menus-toolbar">
+      <div class="toolbar-left">
+        <h1>Menús de hoy</h1>
+        <p class="muted" id="menus-district-label">Mostrando resultados en todos los distritos</p>
+      </div>
+      <div class="toolbar-filters" id="menus-filters"></div>
+    </div>
+    <div class="menu-grid" id="menu-grid"></div>
+  </main>
+
+  <!-- ===================== PANTALLA: DETALLE DE MENÚ ===================== -->
+  <main class="screen" id="screen-detail" data-screen hidden>
+    <button class="back-link" data-nav="menus">← Volver a menús</button>
+    <div class="detail-layout" id="detail-content"></div>
+  </main>
+
+  <!-- ===================== PANTALLA: CARRITO ===================== -->
+  <main class="screen" id="screen-cart" data-screen hidden>
+    <h1>Tu comanda</h1>
+    <p class="muted">Revisa tu pedido antes de pasar a la entrega.</p>
+    <div class="cart-layout">
+      <div class="cart-items" id="cart-items"></div>
+      <aside class="ticket" id="cart-summary"></aside>
+    </div>
+  </main>
+
+  <!-- ===================== PANTALLA: CHECKOUT ===================== -->
+  <main class="screen" id="screen-checkout" data-screen hidden>
+    <button class="back-link" data-nav="cart">← Volver a la comanda</button>
+    <h1>Entrega y pago</h1>
+    <div class="checkout-layout">
+      <form class="checkout-form" id="checkout-form">
+        <fieldset>
+          <legend>1. Dirección de entrega</legend>
+          <label>Distrito
+            <select id="co-distrito" required>
+              <option value="">Selecciona tu distrito</option>
+              <option>Jesús María</option>
+              <option>Pueblo Libre</option>
+              <option>Magdalena</option>
+              <option>San Miguel</option>
+              <option>Surquillo</option>
+              <option>Lince</option>
+            </select>
+          </label>
+          <label>Dirección
+            <input type="text" placeholder="Av. La Marina 123, Dpto 4B" required>
+          </label>
+          <label>Horario de entrega
+            <select id="co-horario" required>
+              <option value="">Elige un horario</option>
+              <option>12:00 p.m. – 12:30 p.m.</option>
+              <option>12:30 p.m. – 1:00 p.m.</option>
+              <option>1:00 p.m. – 1:30 p.m.</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>2. Método de pago</legend>
+          <div class="pay-options" id="pay-options">
+            <label class="pay-option">
+              <input type="radio" name="pago" value="yape" checked>
+              <span class="pay-emoji">📱</span><span>Yape / Plin</span>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="pago" value="tarjeta">
+              <span class="pay-emoji">💳</span><span>Tarjeta</span>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="pago" value="efectivo">
+              <span class="pay-emoji">💵</span><span>Efectivo</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn-primary btn-full">Confirmar pedido</button>
+      </form>
+      <aside class="ticket" id="checkout-summary"></aside>
+    </div>
+  </main>
+
+  <!-- ===================== PANTALLA: CONFIRMACIÓN ===================== -->
+  <main class="screen" id="screen-confirm" data-screen hidden>
+    <div class="confirm-box">
+      <div class="confirm-stamp">✓</div>
+      <h1>¡Tu pedido está en camino a la cocina!</h1>
+      <p class="muted">Pedido <strong id="confirm-id">#SC-0000</strong> confirmado. Te avisaremos cuando esté en preparación.</p>
+      <div class="confirm-tracker">
+        <div class="track-step active"><span class="track-dot"></span>Pedido confirmado</div>
+        <div class="track-step"><span class="track-dot"></span>En preparación</div>
+        <div class="track-step"><span class="track-dot"></span>En camino</div>
+        <div class="track-step"><span class="track-dot"></span>Entregado</div>
+      </div>
+      <button class="btn-primary" data-nav="home">Volver al inicio</button>
+    </div>
+  </main>
+
+  <!-- ===================== PANTALLA: MI CUENTA ===================== -->
+  <main class="screen" id="screen-account" data-screen hidden>
+    <h1>Mi cuenta</h1>
+    <div class="account-layout">
+      <div class="account-card">
+        <h2>Historial de pedidos</h2>
+        <div class="order-history" id="order-history"></div>
+      </div>
+      <div class="account-card">
+        <h2>Tus cupones</h2>
+        <div class="coupon" id="coupon-card"></div>
+      </div>
+    </div>
+  </main>
+  <!-- ===================== BOTTOM NAV (mobile) ===================== -->
+  <nav class="bottom-nav" id="bottom-nav">
+    <button class="bottom-nav-item" data-nav="home" data-tab="home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+      Inicio
+    </button>
+    <button class="bottom-nav-item" data-nav="menus" data-tab="menus">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      Menús
+    </button>
+    <button class="bottom-nav-item" data-nav="cart" data-tab="cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l.4 2M7 13h10l3-8H5.4M7 13L5.4 5M7 13l-1.5 6h12M9 21a1 1 0 100-2 1 1 0 000 2zM18 21a1 1 0 100-2 1 1 0 000 2z"/></svg>
+      Comanda
+    </button>
+    <button class="bottom-nav-item" data-nav="account" data-tab="account">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+      Cuenta
+    </button>
+  </nav>
+
+</div>
+
+<script id="app-script">
+// ============================================================
+// DATOS DE DEMOSTRACIÓN
+// ============================================================
+const COCINEROS = [
+  {id:'c1', nombre:'Doña Rosa', distrito:'Jesús María', rating:4.9, emoji:'👩‍🍳', resenas:128},
+  {id:'c2', nombre:'Sazón de Tía Meche', distrito:'Pueblo Libre', rating:4.8, emoji:'👩‍🍳', resenas:96},
+  {id:'c3', nombre:'Cocina de Don Pepe', distrito:'San Miguel', rating:4.7, emoji:'👨‍🍳', resenas:74},
+  {id:'c4', nombre:'La Olla de Carmen', distrito:'Magdalena', rating:4.9, emoji:'👩‍🍳', resenas:152},
+  {id:'c5', nombre:'Fogón de Lucho', distrito:'Surquillo', rating:4.6, emoji:'👨‍🍳', resenas:58},
+];
+
+const MENUS = [
+  {id:'m1', titulo:'Lomo saltado casero', cocineroId:'c1', categoria:'Almuerzo', precio:17.5, emoji:'🥘',
+    desc:'Lomo de res salteado al wok con cebolla, tomate y un toque de sillao de la casa. Acompañado de arroz blanco y papas fritas hechas al momento.',
+    ingredientes:['Lomo de res','Cebolla roja','Tomate','Arroz','Papa amarilla','Sillao']},
+  {id:'m2', titulo:'Ají de gallina', cocineroId:'c1', categoria:'Almuerzo', precio:16.0, emoji:'🍛',
+    desc:'Receta familiar con gallina deshilachada en crema de ají amarillo, pan y leche. Servido con arroz y media papa amarilla.',
+    ingredientes:['Gallina','Ají amarillo','Pan','Leche','Nueces','Arroz']},
+  {id:'m3', titulo:'Tamal verde', cocineroId:'c2', categoria:'Desayuno', precio:9.5, emoji:'🌽',
+    desc:'Tamal de maíz tierno con un toque de culantro, relleno de cerdo deshilachado, acompañado de salsa criolla fresca.',
+    ingredientes:['Maíz tierno','Culantro','Cerdo','Cebolla','Limón']},
+  {id:'m4', titulo:'Causa limeña', cocineroId:'c2', categoria:'Almuerzo', precio:14.0, emoji:'🥑',
+    desc:'Capas de papa amarilla sazonada con ají amarillo y limón, relleno de pollo deshilachado, palta y mayonesa de la casa.',
+    ingredientes:['Papa amarilla','Ají amarillo','Pollo','Palta','Mayonesa']},
+  {id:'m5', titulo:'Pan con chicharrón', cocineroId:'c3', categoria:'Desayuno', precio:11.0, emoji:'🥪',
+    desc:'Chicharrón de cerdo crocante en pan francés recién horneado, con camote frito y salsa criolla.',
+    ingredientes:['Cerdo','Pan francés','Camote','Cebolla','Limón']},
+  {id:'m6', titulo:'Seco de res con frejoles', cocineroId:'c3', categoria:'Almuerzo', precio:18.0, emoji:'🍲',
+    desc:'Carne de res cocida a fuego lento en culantro molido, acompañada de frejoles canarios y arroz blanco.',
+    ingredientes:['Res','Culantro','Frejol canario','Arroz','Zanahoria']},
+  {id:'m7', titulo:'Mazamorra morada', cocineroId:'c4', categoria:'Postre', precio:7.0, emoji:'🍮',
+    desc:'Postre tradicional a base de maíz morado, piña, membrillo, canela y clavo de olor, espesado con harina de camote.',
+    ingredientes:['Maíz morado','Piña','Membrillo','Canela','Camote']},
+  {id:'m8', titulo:'Arroz con pollo', cocineroId:'c4', categoria:'Almuerzo', precio:15.5, emoji:'🍗',
+    desc:'Arroz verde preparado con culantro y cerveza negra, pollo al horno y una guarnición de papa a la huancaína.',
+    ingredientes:['Pollo','Arroz','Culantro','Papa amarilla','Queso fresco']},
+  {id:'m9', titulo:'Suspiro a la limeña', cocineroId:'c5', categoria:'Postre', precio:6.5, emoji:'🍰',
+    desc:'Manjar blanco de leche evaporada cubierto con un suave merengue al oporto y un toque de canela.',
+    ingredientes:['Leche evaporada','Huevo','Oporto','Canela']},
+];
+
+const RESENAS = [
+  {nombre:'Patricia G.', estrellas:5, texto:'Sabe igual que la comida de mi mamá, llegó caliente y a tiempo.'},
+  {nombre:'Jorge R.', estrellas:5, texto:'El mejor lomo saltado que he probado en delivery, sin exagerar.'},
+  {nombre:'Mariana T.', estrellas:4, texto:'Muy rico, solo le bajaría un poco la sal. Igual lo vuelvo a pedir.'},
+];
+
+// ============================================================
+// ESTADO DE LA APP
+// ============================================================
+const state = {
+  carrito: [], // { menuId, cantidad }
+  distritoElegido: '',
+  filtroCategoria: 'Todos',
+  pedidoConfirmado: null,
+};
+
+function cocineroDe(menu){ return COCINEROS.find(c => c.id === menu.cocineroId); }
+function fmt(n){ return 'S/ ' + n.toFixed(2); }
+function stars(rating){ return '★'.repeat(Math.round(rating)) + '☆'.repeat(5-Math.round(rating)); }
+
+// ============================================================
+// NAVEGACIÓN
+// ============================================================
+function navigate(screen, opts = {}){
+  document.querySelectorAll('[data-screen]').forEach(el => el.hidden = true);
+  const target = document.getElementById('screen-' + screen);
+  if(target){ target.hidden = false; }
+  window.scrollTo({top:0, behavior:'instant'});
+
+  document.querySelectorAll('.bottom-nav-item').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === screen);
+  });
+
+  if(screen === 'home') renderHome();
+  if(screen === 'menus') renderMenus(opts.filter);
+  if(screen === 'detail' && opts.menuId) renderDetail(opts.menuId);
+  if(screen === 'cart') renderCart();
+  if(screen === 'checkout') renderCheckout();
+  if(screen === 'account') renderAccount();
+}
+
+document.addEventListener('click', (e) => {
+  const navBtn = e.target.closest('[data-nav]');
+  if(navBtn){
+    e.preventDefault();
+    navigate(navBtn.dataset.nav, { filter: navBtn.dataset.filter, menuId: navBtn.dataset.menuId });
+  }
+});
+
+// ============================================================
+// RENDER: HOME
+// ============================================================
+function renderHome(){
+  const row = document.getElementById('featured-cooks');
+  const top = [...COCINEROS].sort((a,b)=>b.rating-a.rating).slice(0,3);
+  row.innerHTML = top.map(c => {
+    const platosDelCocinero = MENUS.filter(m => m.cocineroId === c.id);
+    const plato = platosDelCocinero[0];
+    return `
+      <button class="menu-card" data-nav="detail" data-menu-id="${plato.id}" style="text-align:left;border:1px solid var(--cream-deep);">
+        <div class="menu-card-img">${c.emoji}</div>
+        <div class="menu-card-body">
+          <span class="menu-card-cook">${c.distrito}</span>
+          <span class="menu-card-title">${c.nombre}</span>
+          <span class="menu-card-meta"><span class="stars">${stars(c.rating)}</span>&nbsp;${c.rating} (${c.resenas})</span>
+        </div>
+      </button>`;
+  }).join('');
+}
+
+document.getElementById('district-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  state.distritoElegido = document.getElementById('district-select').value;
+  navigate('menus');
+});
+
+// ============================================================
+// RENDER: MENÚS (LISTADO)
+// ============================================================
+function renderMenus(filtroInicial){
+  if(filtroInicial) state.filtroCategoria = filtroInicial;
+
+  const label = document.getElementById('menus-district-label');
+  label.textContent = state.distritoElegido
+    ? `Mostrando resultados en ${state.distritoElegido}`
+    : 'Mostrando resultados en todos los distritos';
+
+  const cats = ['Todos','Desayuno','Almuerzo','Postre'];
+  const filtersEl = document.getElementById('menus-filters');
+  filtersEl.innerHTML = cats.map(cat =>
+    `<button class="filter-chip ${state.filtroCategoria===cat?'active':''}" data-cat="${cat}">${cat}</button>`
+  ).join('');
+  filtersEl.querySelectorAll('.filter-chip').forEach(btn => {
+    btn.addEventListener('click', () => { state.filtroCategoria = btn.dataset.cat; renderMenus(); });
+  });
+
+  let lista = MENUS;
+  if(state.distritoElegido){
+    lista = lista.filter(m => cocineroDe(m).distrito === state.distritoElegido);
+  }
+  if(state.filtroCategoria !== 'Todos'){
+    lista = lista.filter(m => m.categoria === state.filtroCategoria);
+  }
+
+  const grid = document.getElementById('menu-grid');
+  if(lista.length === 0){
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;">No hay menús disponibles con estos filtros todavía. Prueba otro distrito o categoría.</div>`;
+    return;
+  }
+  grid.innerHTML = lista.map(m => {
+    const cocinero = cocineroDe(m);
+    return `
+    <div class="menu-card">
+      <button data-nav="detail" data-menu-id="${m.id}" style="all:unset;cursor:pointer;display:block;">
+        <div class="menu-card-img">${m.emoji}</div>
+      </button>
+      <div class="menu-card-body">
+        <span class="menu-card-cook">${cocinero.nombre} · ${cocinero.distrito}</span>
+        <button data-nav="detail" data-menu-id="${m.id}" style="all:unset;cursor:pointer;text-align:left;">
+          <span class="menu-card-title">${m.titulo}</span>
+        </button>
+        <span class="menu-card-meta"><span class="stars">${stars(cocinero.rating)}</span>&nbsp;${cocinero.rating}</span>
+        <div class="menu-card-foot">
+          <span class="menu-card-price">${fmt(m.precio)}</span>
+          <button class="btn-small" data-add="${m.id}">Agregar</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  grid.querySelectorAll('[data-add]').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.stopPropagation(); addToCart(btn.dataset.add); });
+  });
+}
+
+// ============================================================
+// RENDER: DETALLE
+// ============================================================
+function renderDetail(menuId){
+  const m = MENUS.find(x => x.id === menuId);
+  const cocinero = cocineroDe(m);
+  const content = document.getElementById('detail-content');
+  content.innerHTML = `
+    <div class="detail-img">${m.emoji}</div>
+    <div>
+      <span class="detail-cook-tag">${cocinero.emoji} ${cocinero.nombre} · ${cocinero.distrito}</span>
+      <h1 class="detail-title">${m.titulo}</h1>
+      <p class="detail-desc">${m.desc}</p>
+      <div class="detail-ingredients">
+        ${m.ingredientes.map(i => `<span class="ingredient-tag">${i}</span>`).join('')}
+      </div>
+      <div class="detail-price-row">
+        <span class="detail-price">${fmt(m.precio)}</span>
+        <button class="btn-primary" data-add-detail="${m.id}">Agregar al carrito</button>
+      </div>
+      <div class="reviews">
+        <h3 style="font-size:16px;margin-bottom:8px;">Reseñas de clientes</h3>
+        ${RESENAS.map(r => `
+          <div class="review">
+            <div class="review-head"><span>${r.nombre}</span><span class="stars">${stars(r.estrellas)}</span></div>
+            <p>${r.texto}</p>
+          </div>`).join('')}
+      </div>
+    </div>
+  `;
+  content.querySelector('[data-add-detail]').addEventListener('click', () => {
+    addToCart(menuId);
+    navigate('cart');
+  });
+}
+
+// ============================================================
+// CARRITO
+// ============================================================
+function addToCart(menuId){
+  const item = state.carrito.find(i => i.menuId === menuId);
+  if(item){ item.cantidad++; } else { state.carrito.push({menuId, cantidad:1}); }
+  updateCartCount();
+}
+function updateCartCount(){
+  const total = state.carrito.reduce((sum,i)=>sum+i.cantidad,0);
+  document.getElementById('cart-count').textContent = total;
+}
+function cartTotals(){
+  const items = state.carrito.map(i => ({...i, menu: MENUS.find(m=>m.id===i.menuId)}));
+  const subtotal = items.reduce((s,i)=>s + i.menu.precio*i.cantidad, 0);
+  const envio = items.length ? 4.5 : 0;
+  return { items, subtotal, envio, total: subtotal + envio };
+}
+
+function renderCart(){
+  const { items, subtotal, envio, total } = cartTotals();
+  const itemsEl = document.getElementById('cart-items');
+  const summaryEl = document.getElementById('cart-summary');
+
+  if(items.length === 0){
+    itemsEl.innerHTML = `<div class="empty-state">Tu comanda está vacía. <br><br><button class="btn-primary" data-nav="menus">Ver menús de hoy</button></div>`;
+    summaryEl.innerHTML = '';
+    return;
+  }
+
+  itemsEl.innerHTML = items.map(i => `
+    <div class="cart-item">
+      <div class="cart-item-img">${i.menu.emoji}</div>
+      <div class="cart-item-info">
+        <div class="name">${i.menu.titulo}</div>
+        <div class="cook">${cocineroDe(i.menu).nombre} · x${i.cantidad}</div>
+      </div>
+      <div class="cart-item-price">${fmt(i.menu.precio * i.cantidad)}</div>
+      <button class="cart-item-remove" data-remove="${i.menuId}">Quitar</button>
+    </div>
+  `).join('');
+
+  itemsEl.querySelectorAll('[data-remove]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.carrito = state.carrito.filter(i => i.menuId !== btn.dataset.remove);
+      updateCartCount();
+      renderCart();
+    });
+  });
+
+  summaryEl.innerHTML = `
+    <h3>Resumen del pedido</h3>
+    <div class="ticket-row"><span>Subtotal</span><span>${fmt(subtotal)}</span></div>
+    <div class="ticket-row"><span>Envío</span><span>${fmt(envio)}</span></div>
+    <div class="ticket-row total"><span>Total</span><span>${fmt(total)}</span></div>
+    <button class="btn-primary btn-full" data-nav="checkout" style="margin-top:18px;">Ir a entrega y pago</button>
+  `;
+}
+
+// ============================================================
+// CHECKOUT
+// ============================================================
+function renderCheckout(){
+  const { items, subtotal, envio, total } = cartTotals();
+  const summaryEl = document.getElementById('checkout-summary');
+  summaryEl.innerHTML = `
+    <h3>Tu comanda</h3>
+    ${items.map(i => `<div class="ticket-row"><span>${i.cantidad}x ${i.menu.titulo}</span><span>${fmt(i.menu.precio*i.cantidad)}</span></div>`).join('')}
+    <div class="ticket-row"><span>Envío</span><span>${fmt(envio)}</span></div>
+    <div class="ticket-row total"><span>Total a pagar</span><span>${fmt(total)}</span></div>
+  `;
+  if(state.distritoElegido){
+    document.getElementById('co-distrito').value = state.distritoElegido;
+  }
+}
+
+document.getElementById('checkout-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  if(state.carrito.length === 0){ navigate('menus'); return; }
+  const orderNum = Math.floor(1000 + Math.random()*9000);
+  state.pedidoConfirmado = { id: 'SC-' + orderNum, items: [...state.carrito] };
+  document.getElementById('confirm-id').textContent = '#' + state.pedidoConfirmado.id;
+  state.carrito = [];
+  updateCartCount();
+  navigate('confirm');
+});
+
+// ============================================================
+// MI CUENTA
+// ============================================================
+function renderAccount(){
+  const history = document.getElementById('order-history');
+  const pedidos = [
+    {id:'SC-7421', fecha:'15 jun', plato:'Lomo saltado casero', estado:'Entregado'},
+    {id:'SC-7235', fecha:'10 jun', plato:'Ají de gallina', estado:'Entregado'},
+    {id:'SC-7022', fecha:'04 jun', plato:'Causa limeña', estado:'Entregado'},
+  ];
+  history.innerHTML = pedidos.map(p => `
+    <div class="order-history-row">
+      <span>${p.fecha} — ${p.plato}</span>
+      <span class="order-status">${p.estado}</span>
+    </div>
+  `).join('');
+
+  document.getElementById('coupon-card').innerHTML = `
+    <p>Cupón de fidelidad</p>
+    <div class="code">CASERO10</div>
+    <p>10% de descuento en tu próximo pedido</p>
+  `;
+}
+
+// ============================================================
+// INICIO
+// ============================================================
+navigate('home');
+</script>
+
+</body>
+</html>
