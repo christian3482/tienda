@@ -345,7 +345,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <fieldset>
           <legend>1. Dirección de entrega</legend>
           <label>Distrito
-            <select id="co-distrito" required>
+            <select id="co-distrito">
               <option value="">Selecciona tu distrito</option>
               <option>Jesús María</option>
               <option>Pueblo Libre</option>
@@ -356,10 +356,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </select>
           </label>
           <label>Dirección
-            <input type="text" placeholder="Av. La Marina 123, Dpto 4B" required>
+            <input type="text" id="co-direccion" placeholder="Av. La Marina 123, Dpto 4B">
           </label>
+          <p id="checkout-error" class="muted" style="color:var(--terracota);display:none;margin-top:-6px;"></p>
           <label>Horario de entrega
-            <select id="co-horario" required>
+            <select id="co-horario">
               <option value="">Elige un horario</option>
               <option>12:00 p.m. – 12:30 p.m.</option>
               <option>12:30 p.m. – 1:00 p.m.</option>
@@ -757,6 +758,19 @@ function renderCheckout(){
 document.getElementById('checkout-form').addEventListener('submit', (e) => {
   e.preventDefault();
   if(state.carrito.length === 0){ navigate('menus'); return; }
+
+  const errorEl = document.getElementById('checkout-error');
+  const distrito = document.getElementById('co-distrito').value;
+  const direccion = document.getElementById('co-direccion').value.trim();
+  const horario = document.getElementById('co-horario').value;
+
+  if(!distrito || !direccion || !horario){
+    errorEl.textContent = 'Por favor completa distrito, dirección y horario de entrega.';
+    errorEl.style.display = 'block';
+    return;
+  }
+  errorEl.style.display = 'none';
+
   const orderNum = Math.floor(1000 + Math.random()*9000);
   state.pedidoConfirmado = { id: 'SC-' + orderNum, items: [...state.carrito] };
   document.getElementById('confirm-id').textContent = '#' + state.pedidoConfirmado.id;
